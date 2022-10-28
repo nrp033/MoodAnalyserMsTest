@@ -8,9 +8,22 @@ namespace MoodAnalyser1
 {
     public class MoodAnalyser
     {
-        public string AnalyseMood(string Massage)
+        //Class Field
+        string Message;
+        //Constructor with no Parameter- Default Constructor
+        public MoodAnalyser()
         {
-            if (Massage.ToLower().Contains("sad"))
+            Message = null;
+        }
+        //Parameterized Constructor
+        public MoodAnalyser(string message)
+        {
+            Message = message;
+        }
+
+        public string AnalyseMood()
+        {
+            if (Message.ToLower().Contains("sad"))
             {
                 return "SAD";
             }

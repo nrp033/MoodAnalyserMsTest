@@ -6,38 +6,39 @@ namespace MoodAnalyserTest
     [TestClass]
     public class UnitTest1
     {
-            [TestMethod]
-            public void GivenMood_ShouldReturn_SAD_MOOD()
-        
-            {
-                //Arrange
-                string Message = "I am in Sad Mood";
-                MoodAnalyser MoodCheck = new MoodAnalyser();
+        [TestMethod]
+        public void GivenMood_ShouldReturn_SAD_MOOD()
 
-                string expected = "SAD";
+        {
+            //Arrange
+            string Message = "I am in Sad Mood";
+            MoodAnalyser MoodCheck = new MoodAnalyser(Message);
 
-                //Act
-                string actual = MoodCheck.AnalyseMood(Message);
+            string expected = "SAD";
 
-                //Assert
-                Assert.AreEqual(expected, actual);
-            }
+            //Act
+            string actual = MoodCheck.AnalyseMood();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
 
-            [TestMethod]
-            public void GivenAnyMood_ShouldReturn_Happy()
-            {
-                //Arrange
-                string Message = "I am In Any Mood";
-                MoodAnalyser MoodCheck = new MoodAnalyser();
-                string expected = "HAPPY";
+        [TestMethod]
+        public void GivenHappyMood_ShouldReturn_Happy()
+        {
+            //Arrange
+            string Message = "I am im Happy Mood";
+            MoodAnalyser MoodCheck = new MoodAnalyser(Message);
+            string expected = "HAPPY";
 
-                //Act
-                string actual = MoodCheck.AnalyseMood(Message);
+            //Act
+            string actual = MoodCheck.AnalyseMood();
 
-                //Assert
-                Assert.AreEqual(expected, actual);
-            }
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
+
 
     }
       

@@ -8,8 +8,8 @@ namespace MoodAnalyser1
         {
             Console.WriteLine("Hello, World!");
 
-            MoodAnalyser moodcheck=new MoodAnalyser();
-            string result = moodcheck.AnalyseMood("sad");
+            MoodAnalyser moodcheck=new MoodAnalyser("sad");
+            string result = moodcheck.AnalyseMood();
 
             Console.WriteLine(result);
 
