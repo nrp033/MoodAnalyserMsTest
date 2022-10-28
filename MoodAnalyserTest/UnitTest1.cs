@@ -28,7 +28,7 @@ namespace MoodAnalyserTest
         public void GivenHappyMood_ShouldReturn_Happy()
         {
             //Arrange
-            string Message = "I am im Happy Mood";
+            string Message = "I am om Happy Mood";
             MoodAnalyser MoodCheck = new MoodAnalyser(Message);
             string expected = "HAPPY";
 
