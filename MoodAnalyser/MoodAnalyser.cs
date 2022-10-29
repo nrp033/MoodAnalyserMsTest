@@ -10,11 +10,13 @@ namespace MoodAnalyser1
     {
         //Class Field
         string Message;
+       
         //Constructor with no Parameter- Default Constructor
         public MoodAnalyser()
         {
             Message = null;
         }
+       
         //Parameterized Constructor
         public MoodAnalyser(string message)
         {
@@ -25,9 +27,10 @@ namespace MoodAnalyser1
         {
             try
             {
-                if (Message == null)
+                if (Message.Equals(string.Empty))
                 {
-                    throw new NullReferenceException();
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.EMPTY_MESSAGE, "Mood Should Not Be Empty");
+
                 }
 
                 if (Message.ToLower().Contains("sad"))
@@ -39,9 +42,13 @@ namespace MoodAnalyser1
                     return "HAPPY";
                 }
             }
-            catch(NullReferenceException ex)
+            catch (NullReferenceException)
             {
-                return "HAPPY";
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NULL_MESSAGE, "Mood Should Not Be Null");
+            }
+            catch (MoodAnalyserCustomException)
+            {
+                return "Mood Should Not Be Empty";
             }
 
         }

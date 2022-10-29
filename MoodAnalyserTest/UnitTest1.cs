@@ -7,14 +7,14 @@ namespace MoodAnalyserTest
     public class UnitTest1
     {
         [TestMethod]
-        public void GivenNull_ShouldReturn_Happy()
+        public void GivenNullorEmptyMessage_ShouldReturnExceptionHandleMessage()
 
         {
             //Arrange
-            string Message = null;
+            string Message = "";
             MoodAnalyser MoodCheck = new MoodAnalyser(Message);
 
-            string expected = "HAPPY";
+            string expected = "Mood Should Not Be Empty";
 
             //Act
             string actual = MoodCheck.AnalyseMood();
