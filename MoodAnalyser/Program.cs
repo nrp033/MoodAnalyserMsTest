@@ -6,9 +6,9 @@ namespace MoodAnalyser1
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
-
-            MoodAnalyser moodcheck=new MoodAnalyser("sad");
+            Console.WriteLine();
+            string mood = null;
+            MoodAnalyser moodcheck=new MoodAnalyser(mood);
             string result = moodcheck.AnalyseMood();
 
             Console.WriteLine(result);
