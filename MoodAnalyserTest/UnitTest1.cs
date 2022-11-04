@@ -6,8 +6,9 @@ namespace MoodAnalyserTest
     [TestClass]
     public class UnitTest1
     {
+       //UC 3.0
         [TestMethod]
-        public void GivenNullorEmptyMessage_ShouldReturnExceptionHandleMessage()
+        public void InformUser_ifGive_invalidMoodLikeNullorEmptyby_CustomException()
 
         {
             //Arrange
@@ -25,7 +26,10 @@ namespace MoodAnalyserTest
 
 
 
+       
+
+
     }
-      
-    
+
+
 }
