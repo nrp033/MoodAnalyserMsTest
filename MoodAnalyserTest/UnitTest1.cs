@@ -26,7 +26,21 @@ namespace MoodAnalyserTest
 
 
 
-       
+        //TestCase 3.1 Given Null Moood Should Return Mood Should Not be Null
+        [TestMethod]
+        public void GivenNullMood_ShouldReturn_MoodAnalysisException()
+        {
+            //Arrange
+            // string Message = null;
+            MoodAnalyser moodAnalyser = new MoodAnalyser();
+            string expected = "Mood Should Not be Null";
+
+            //Act
+            string actual = moodAnalyser.AnalyseMood();
+
+            //Assert
+            Assert.AreEqual(expected, actual);
+        }
 
 
     }
