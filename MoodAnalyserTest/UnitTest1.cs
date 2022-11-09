@@ -92,24 +92,22 @@ namespace MoodAnalyserTest
                 Assert.AreEqual(expected, ex.Message);
             }
         }
-        ////Test Case 4.2
-        //[TestMethod]
-        //public void GivenImpoperClassName_ShouldThrowMoodAnalyseException_IndicatingNoSuchClass()
-        //{
-        //    try
-        //    {
-        //        //Arrange
-        //        string className = "DemoNamespace.MoodAnalyser";     //wrong className passed to pass test
-        //        string constructorName = "MoodAnalyser";
-        //        //Act
-        //        object resultObj = MoodAnalyserFactory.CreateMoodAnalyser(className, constructorName);
-        //    }
-        //    catch (MoodAnalyserCustomException e)
-        //    {
-        //        //Assert
-        //        Assert.AreEqual("Class not found", e.Message);
-        //    }
-        //}
+        //TC-4.3 should throw NO_SUCH_CONTRUCTOR exception.
+        [TestMethod]
+        public void GivenImproperConstructor_Shouldthrow_MoodAnalysisException()
+        {
+            string expected = "Constructor is Not Found";
+            try
+            {
+                MoodAnalyser moodAnalyser = new MoodAnalyser();
+                object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser1.MoodAnalyzer", "MoodAnalyser");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+
 
     }
 
