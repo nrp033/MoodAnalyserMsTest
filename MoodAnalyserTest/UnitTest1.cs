@@ -107,6 +107,16 @@ namespace MoodAnalyserTest
                 Assert.AreEqual(expected, ex.Message);
             }
         }
+        //TC 5.1 :  Given MoodAnalyser Class Name When Proper Should Returns MoodAnalyser Object
+        [TestMethod]
+        public void GivenMoodAnalyserClassName_WhenProper_ShouldReturns_MoodAnalyserObject()
+        {
+            object expected = new MoodAnalyser("HAPPY");
+            object obj = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("MoodAnalyser1.MoodAnalyser", "MoodAnalyser", "HAPPY");
+            expected.Equals(obj);
+        }
+
+        
 
 
     }
