@@ -11,7 +11,7 @@ namespace MoodAnalyser1
     public class MoodAnalyserFactory
     {
 
-        //CreateMoodAnalyser method to create object of MoodAnalyse class.
+        //Creating MoodAnalyser method to create object of MoodAnalyse class.
         public static object CreateMoodAnalyser(string className, string constructorName)
         {
             string pattern = @"." + constructorName + "$";
@@ -39,5 +39,16 @@ namespace MoodAnalyser1
             }
         }
 
+        //Creating MoodAnalyser Using Parameterized Constructor method to creat object of MoodAnalyser class with Parameterised Constructor.
+        public static object CreateMoodAnalyserUsingParameterizedConstructor(string className, string constructorName, string message)
+        {
+            Type type = typeof(MoodAnalyser);
+
+            ConstructorInfo constructorInfo = type.GetConstructor(new[] { typeof(string) });
+
+            object instance = constructorInfo.Invoke(new object[] { message });
+
+            return instance;
+        }  
     }
 }
