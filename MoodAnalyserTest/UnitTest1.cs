@@ -1,6 +1,7 @@
 
 using MoodAnalyser1;
 using System.Globalization;
+using System.Security.Claims;
 
 namespace MoodAnalyserTest
 {
@@ -116,8 +117,21 @@ namespace MoodAnalyserTest
             expected.Equals(obj);
         }
 
-        
 
+        // TC 5.2 : Given Class Name When Improper Should Throw MoodAnalysis Exception.
+        [TestMethod]
+        public void GivenClassName_WhenImproper_ShouldThrow_MoodAnalysisException()
+        {
+            string expected = "Class is Not Found";
+            try
+            {
+                object moodAnalyserObject = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("MoodAnalyser1.MoodAnalyser", "MoodAnalyser", "HAPPY");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
 
     }
 
