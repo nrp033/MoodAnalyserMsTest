@@ -70,12 +70,46 @@ namespace MoodAnalyserTest
             object expected = new MoodAnalyser();
 
             //Act
-            object factory = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser1.MoodAnalyser");
+            object factory = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser1.MoodAnalyser","MoodAnalyser");
 
             //Assert
 
             expected.Equals(factory);
         }
+
+        // TC 4.2 : Given Class Name When Improper Should Throw MoodAnalysis Exception.
+        [TestMethod]
+        public void GivenImpoperClassName_ShouldThrowMoodAnalyseException_IndicatingNoSuchClass()
+        {
+            string expected = "Class Not Found";
+            try
+            {
+                MoodAnalyser moodAnalyser = new MoodAnalyser();
+                object obj = MoodAnalyserFactory.CreateMoodAnalyser("MoodAnalyser1.MoodAnalyser","MoodAnalyser");
+            }
+            catch (MoodAnalyserCustomException ex)
+            {
+                Assert.AreEqual(expected, ex.Message);
+            }
+        }
+        ////Test Case 4.2
+        //[TestMethod]
+        //public void GivenImpoperClassName_ShouldThrowMoodAnalyseException_IndicatingNoSuchClass()
+        //{
+        //    try
+        //    {
+        //        //Arrange
+        //        string className = "DemoNamespace.MoodAnalyser";     //wrong className passed to pass test
+        //        string constructorName = "MoodAnalyser";
+        //        //Act
+        //        object resultObj = MoodAnalyserFactory.CreateMoodAnalyser(className, constructorName);
+        //    }
+        //    catch (MoodAnalyserCustomException e)
+        //    {
+        //        //Assert
+        //        Assert.AreEqual("Class not found", e.Message);
+        //    }
+        //}
 
     }
 
