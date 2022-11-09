@@ -39,16 +39,30 @@ namespace MoodAnalyser1
             }
         }
 
-        //Creating MoodAnalyser Using Parameterized Constructor method to creat object of MoodAnalyser class with Parameterised Constructor.
+
+
+
+        //Create MoodAnalyser Using Parameterized Constructor method to creat object of MoodAnalyser class with Parameterised Constructor.
         public static object CreateMoodAnalyserUsingParameterizedConstructor(string className, string constructorName, string message)
         {
             Type type = typeof(MoodAnalyser);
-
-            ConstructorInfo constructorInfo = type.GetConstructor(new[] { typeof(string) });
-
-            object instance = constructorInfo.Invoke(new object[] { message });
-
-            return instance;
-        }  
+            if (type.Name.Equals(className) || type.FullName.Equals(className))
+            {
+                if (type.Name.Equals(constructorName))
+                {
+                    ConstructorInfo constructorInfo = type.GetConstructor(new[] { typeof(string) });
+                    object instance = constructorInfo.Invoke(new object[] { message });
+                    return instance;
+                }
+                else
+                {
+                    throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "Constructor not Found");
+                }
+            }
+            else
+            {
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_CLASS, "Class not Found");
+            }
+        }
     }
 }

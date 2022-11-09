@@ -2,6 +2,7 @@
 using MoodAnalyser1;
 using System.Globalization;
 using System.Security.Claims;
+using System.Security.Cryptography.X509Certificates;
 
 namespace MoodAnalyserTest
 {
@@ -118,20 +119,60 @@ namespace MoodAnalyserTest
         }
 
 
-        // TC 5.2 : Given Class Name When Improper Should Throw MoodAnalysis Exception.
+        //Test Case 5.2 Given improper Class Name Should Throw Excepion
+
         [TestMethod]
-        public void GivenClassName_WhenImproper_ShouldThrow_MoodAnalysisException()
+        public void GivenClassNameWhenImproper_ShouldThrowMoodAnalysisException_NoSuchClassFound()
         {
-            string expected = "Class is Not Found";
             try
             {
-                object moodAnalyserObject = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("MoodAnalyser1.MoodAnalyser", "MoodAnalyser", "HAPPY");
+                //Arrange
+                string className = "DemoNamespace.MoodAnalyser";
+                string constructorName = "MoodAnalyser";
+
+
+                //Act
+                object actual = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor(className, constructorName, "HAPPY");
+
+
             }
-            catch (MoodAnalyserCustomException ex)
+            catch (MoodAnalyserCustomException e)
             {
-                Assert.AreEqual(expected, ex.Message);
+                //Assert
+                Assert.AreEqual("Class not Found", e.Message);
             }
+
         }
+
+
+        //Test Case 5.3 Given improper Constructor Name Should Throw Excepion
+
+        [TestMethod]
+        public void GivenConstructorNameWhenImproper_ShouldThrowMoodAnalysisException_NoSuchMethodFound()
+        {
+            try
+            {
+                //Arrange
+                string className = "MoodAnalyser1.MoodAnalyser";
+                string constructorName = "DemoConstructorName";
+
+
+                //Act
+                object actual = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor(className, constructorName, "GOOD");
+
+
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+                //Assert
+                Assert.AreEqual("Constructor not Found", e.Message);
+            }
+
+        }
+
+
+
+
 
     }
 
