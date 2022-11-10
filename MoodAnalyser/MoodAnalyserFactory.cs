@@ -68,8 +68,8 @@ namespace MoodAnalyser1
         public static string InvokeAnalyseMood(string message, string methodName)
         {
 
-            Type type = Type.GetType("Mood_Analyser_Problems.MoodAnalyser");
-            object moodAnalyseObject = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("Mood_Analyser_Problems.MoodAnalyser", "MoodAnalyser", message);
+            Type type = Type.GetType("MoodAnalyser1.MoodAnalyser");
+            object moodAnalyseObject = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("MoodAnalyser1.MoodAnalyser", "MoodAnalyser", message);
             MethodInfo methodeInfo = type.GetMethod(methodName);
             object mood = methodeInfo.Invoke(moodAnalyseObject, null);
             return mood.ToString();

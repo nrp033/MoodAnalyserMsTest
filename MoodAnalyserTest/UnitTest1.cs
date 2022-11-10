@@ -172,6 +172,17 @@ namespace MoodAnalyserTest
 
 
 
+        //  TC 6.1 Given happy message using reflection when proper should return happy mood.
+        [TestMethod]
+        public void GivenHappyMessage_WhenUsingReflection_ThenShouldReturnHappyMood()
+        {
+            string expected = "HAPPY";
+            object obj = MoodAnalyserFactory.InvokeAnalyseMood("HAPPY", "AnalyseMood");
+            Assert.AreEqual(expected, obj);
+        }
+
+
+
 
 
     }
