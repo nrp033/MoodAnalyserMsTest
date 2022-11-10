@@ -67,12 +67,20 @@ namespace MoodAnalyser1
 
         public static string InvokeAnalyseMood(string message, string methodName)
         {
+            try
+            {
+                Type type = Type.GetType("MoodAnalyser1.MoodAnalyser");
 
-            Type type = Type.GetType("MoodAnalyser1.MoodAnalyser");
-            object moodAnalyseObject = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("MoodAnalyser1.MoodAnalyser", "MoodAnalyser", message);
-            MethodInfo methodeInfo = type.GetMethod(methodName);
-            object mood = methodeInfo.Invoke(moodAnalyseObject, null);
-            return mood.ToString();
+                
+                object moodAnalyseObject = MoodAnalyserFactory.CreateMoodAnalyserUsingParameterizedConstructor("MoodAnalyser1.MoodAnalyser", "MoodAnalyser", message);
+                MethodInfo methodeInfo = type.GetMethod(methodName);
+                object mood = methodeInfo.Invoke(moodAnalyseObject, null);
+                return mood.ToString();
+            }
+            catch (NullReferenceException)
+            {
+                throw new MoodAnalyserCustomException(MoodAnalyserCustomException.ExceptionType.NO_SUCH_METHOD, "Method Not Found");
+            }
         }
 
 

@@ -1,5 +1,6 @@
 
 using MoodAnalyser1;
+using System;
 using System.Globalization;
 using System.Security.Claims;
 using System.Security.Cryptography.X509Certificates;
@@ -178,9 +179,28 @@ namespace MoodAnalyserTest
         {
             string expected = "HAPPY";
             object obj = MoodAnalyserFactory.InvokeAnalyseMood("HAPPY", "AnalyseMood");
-            Assert.AreEqual(expected, obj);
+            Assert.AreEqual(expected, obj); 
         }
 
+        //Test Case 6.2 Given Improper Method Should throw Mood Analysis Exception
+
+        [TestMethod]
+        public void GivenImproperMethod_ShouldThrowException()
+        {
+            //Arrange
+            string expected = "Method Not Found";
+            try
+            {
+               //Act
+                string mood = MoodAnalyserFactory.InvokeAnalyseMood("Happy", "AnalyseChecking");     //passing Wrong MethodName
+            }
+            catch (MoodAnalyserCustomException e)
+            {
+
+                //Assert
+                Assert.AreEqual(expected, e.Message);
+            }
+        }
 
 
 
